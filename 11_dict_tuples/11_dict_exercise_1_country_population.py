@@ -5,48 +5,63 @@ population = {
     'pakistan': 21
 }
 
-def add():
-    country=input("Enter country name to add:")
-    country=country.lower()
+def print_population():
+    for key,value in population.items():
+        print(f"{key} => {value}")
+
+def search(country):
     if country in population:
-        print("Country already exist in our dataset. Terminating")
-        return
-    p=input(f"Enter population for {country}")
-    p=float(p)
-    population[country]=p # Adds new key value pair to dictionary
-    print_all()
+        print(f"{country} => {population[country]}")
+    else:
+        print("No records available")
+    return
 
-def remove():
-    country = input("Enter country name to remove:")
-    country = country.lower()
-    if country not in population:
-        print("Country doesn't exist in our dataset. Terminating")
+def add(country, population_num):
+    if country in population:
+        print("Country already exists in dict")
         return
-    del population[country]
-    print_all()
+    p = float(population_num)
+    population[country] = p 
+    print_population()
+    return
 
-def query():
-    country = input("Enter country name to query:")
-    country = country.lower()
-    if country not in population:
-        print("Country doesn't exist in our dataset. Terminating")
-        return
-    print(f"Population of {country} is: {population[country]} crore")
-
-def print_all():
-    for country, p in population.items():
-        print(f"{country}==>{p}")
+def remove(country):
+    if country in population:
+        del population[country]
+        print_population()
+    else:
+        print("No records available")
+    return
 
 def main():
-    op=input("Enter operation (add, remove, query or print):")
-    if op.lower() == 'add':
-        add()
-    elif op.lower() == 'remove':
-        remove()
-    elif op.lower() == 'query':
-        query()
-    elif op.lower() == 'print':
-        print_all()
+    print("Select the action to be performed from below")
+    print("1. Print the population dict")
+    print("2. Add entry in the population dict")
+    print("3. Remove entry using country from population dict")
+    print("4. Query country and print population")
+    userip = input()
+
+    if userip == "1":
+        print_population()
+        return
+    elif userip == "2":
+        countryip = input("Enter country name: ")
+        country = countryip.lower()
+        popip = input("Enter population: ")
+        add(country,popip) 
+        return
+    elif userip == "3":
+        countryip = input("Enter country name: ")
+        country = countryip.lower()
+        remove(country)
+        return
+    elif userip == "4":
+        countryip = input("Enter country name: ")
+        country = countryip.lower()
+        search(country)
+        return
+    else:
+        print("Entered choice is invalid")
 
 if __name__ == '__main__':
     main()
