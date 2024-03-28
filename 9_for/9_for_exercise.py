@@ -6,19 +6,13 @@
 # Using for loop figure out how many times you got heads
 print("\nExercise 1\n")
 result = ["heads","tails","tails","heads","tails","heads","heads","tails","tails","tails"]
-count = 0
-for item in result:
-    if item == "heads":
-        count += 1
-print("Heads count: ",count)
+count = [res for res in result if res == "heads"]
+print(len(count))
 
 
 # 2. Print square of all numbers between 1 to 10 except even numbers
 print("\nExercise 2\n")
-for i in range(1,11):
-    if i % 2 == 0:
-        continue
-    print(i*i)
+print([num*num for num in range(1,10,2)])
 
 # 3. Your monthly expense list (from Jan to May) looks like this,
 # ```
@@ -33,14 +27,10 @@ expense_list = [2340, 2500, 2100, 3100, 2980]
 e = input("Enter expense amount: ")
 e = int(e)
 
-month = -1
-for i in range(len(expense_list)):
-    if e == expense_list[i]:
-        month = i
-        break
+index = [index for index,exp in enumerate(expense_list) if exp == e]
 
-if month != -1:
-    print(f'You spent {e} in {month_list[month]}')
+if index[0]:
+    print(f'You spent {e} in {month_list[index[0]]}')
 else:
     print(f'You didn\'t spend {e} in any month')
 
@@ -72,9 +62,9 @@ else:
 # *****
 # ```
 print("\nExercise 5\n")
-
-for i in range(1,6):
-    s = ''
+line = ""
+for i in range(6):
+    line = ""
     for j in range(i):
-        s += '*'
-    print(s)
+        line += "*"
+    print(line)
