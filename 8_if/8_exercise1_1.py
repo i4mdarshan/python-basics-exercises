@@ -11,13 +11,13 @@ india = ["mumbai", "banglore", "chennai", "delhi"]
 pakistan = ["lahore", "karachi", "islamabad"]
 bangladesh = ["dhaka", "khulna", "rangpur"]
 
-city = input("Enter city name: ")
+user_city = input("Enter your city: ")
 
-if city in india:
-    print(f"{city} is in india")
-elif city in pakistan:
-    print(f"{city} is in pakistan")
-elif city in bangladesh:
-    print(f"{city} is in bangladesh")
+if user_city in india:
+    print(f"{user_city} is in India")
+elif user_city in pakistan:
+    print(f"{user_city} is in Pakistan")
+elif user_city in bangladesh:
+    print(f"{user_city} is in Bangladesh")
 else:
-    print(f"I won't be able to tell you which country {city} is in! Sorry!")
+    print("City not avaible in db")
